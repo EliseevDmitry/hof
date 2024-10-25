@@ -1375,42 +1375,80 @@ import Foundation
 //------------------------------------------------------------29-FOR-------------------------------------------------------------
 
 //FOR:
-//var str = "place"
-//func removeFirstLast(_ string: inout String) {
-//    var arrChar: [Character] = Array(string)
-//    if arrChar.count % 2 == 0 {
-//        return
+//var arrayOne = [4, 3, 1, 2, 5, 10, 6, 7, 9, 8]
+//func sumEvenNumbers(array: [Int]) -> Int {
+//    var counter = Int()
+//    for item in array {
+//       counter += item % 2 == 0 ? item : 0
 //    }
-//    string.removeAll()
-//    let centerIndex = (arrChar.count - 1)/2
-//    for (index, item) in arrChar.enumerated() {
-//        if index == centerIndex {
-//            continue
-//        }
-//        string.append(item)
-//    }
+//    return counter
 //}
 //
-//removeFirstLast(&str)
-//print(str)
+//
+//let result = sumEvenNumbers(array: arrayOne)
+//print(result)
 
 
 //------------------------------------------------------------29-WHILE-----------------------------------------------------------
 
 //WHILE
-//var str = "place"
-//func removeFirstLast(_ string: inout String) {
-//    var index = string.startIndex
-//    if string.distance(from: string.startIndex, to: string.endIndex) % 2 == 0 {
-//        return
+//var arrayOne = [4, 3, 1, 2, 5, 10, 6, 7, 9, 8]
+//func sumEvenNumbers(array: [Int]) -> Int {
+//    var counter = Int()
+//    var index = Int()
+//    while index < array.count {
+//        counter += array[index] % 2 == 0 ? array[index] : 0
+//        index += 1
 //    }
-//    while index < string.endIndex {
-//        if index == string.index(string.startIndex, offsetBy: ((string.distance(from: string.startIndex, to: string.endIndex)-1)/2)) {
-//            string.remove(at: index)
-//        }
-//       index = string.index(after: index)
-//    }
+//    return counter
 //}
 //
-//removeFirstLast(&str)
-//print(str)
+//
+//let result = sumEvenNumbers(array: arrayOne)
+//print(result)
+
+//------------------------------------------------------------30-----------------------------------------------------------------
+//30. Посчитать разницу между максимальным и минимальным
+//
+//[23, 3, 19, 21, 16] -> 20 (23 - 3)
+//[1, 434, 555, 34, 112] -> 554 (555 - 1)
+//
+//func differenceMaxMin(_ array: [Int]) -> Int {
+//}
+//------------------------------------------------------------30-FOR-------------------------------------------------------------
+
+//FOR:
+//var arrayOne = [23, 3, 19, 21, 16]
+//var arrayOne = [1, 434, 555, 34, 112]
+//func sumEvenNumbers(array: [Int]) -> Int {
+//    guard let first = array.first else {return 0}
+//    var counter = (first, first)
+//    for item in array {
+//        counter = ((item > counter.0 ? item : counter.0), (item < counter.1 ? item : counter.1))
+//    }
+//    return (counter.0 - counter.1)
+//}
+//
+//
+//let result = sumEvenNumbers(array: arrayOne)
+//print(result)
+
+
+//------------------------------------------------------------30-WHILE-----------------------------------------------------------
+
+//WHILE
+//var arrayOne = [1, 434, 555, 34, 112]
+//func sumEvenNumbers(array: [Int]) -> Int {
+//    guard let first = array.first else {return 0}
+//    var counter = (first, first)
+//    var index = 0
+//    while index < array.count {
+//        counter = ((array[index] > counter.0 ? array[index] : counter.0), (array[index] < counter.1 ? array[index] : counter.1))
+//        index += 1
+//    }
+//    return (counter.0 - counter.1)
+//}
+//
+//
+//let result = sumEvenNumbers(array: arrayOne)
+//print(result)
