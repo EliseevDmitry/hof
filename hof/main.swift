@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 //------------------------------------------------------------2-----------------------------------------------------------------
 
 //2. Посчитать произведение элементов в массиве
@@ -1005,3 +1006,411 @@ import Foundation
 //
 //rootOrSquare(&arrayOne)
 //print(arrayOne)
+
+//------------------------------------------------------------22-----------------------------------------------------------------
+
+//22. Есть отсортированный массив. Найти индекс числа или
+//если нет числа индекс где он должен быть
+//
+//target = 7
+//[1, 2, 3, 4, 6, 8, 9] -> 5
+//[1, 2, 7, 9] -> 2
+//
+//func findIndex(_ array: [Int], target: Int) -> Int {
+//}
+//Исключил все условия!
+
+//------------------------------------------------------------22-FOR-------------------------------------------------------------
+
+//FOR:
+//var arrayOne = [1, 2, 3, 4, 6, 8, 9]
+//var target = 7
+//func findIndex(_ array: [Int], target: Int) -> Int {
+//    var result = Int()
+//    for (index, item) in array.enumerated() {
+//        if array.index(after: index) < array.endIndex {
+//            if target > item && target < array[array.index(after: index)] {
+//                result = (index + 1)
+//                break
+//            }
+//        }
+//        if target == item {
+//            result = index
+//            break
+//        }
+//        if index == 0 && target < item {
+//            result = array.startIndex
+//            break
+//        }
+//        if array.index(after: index) == array.endIndex && result == 0 {
+//            result = array.endIndex
+//            break
+//        }
+//    }
+//return result
+//}
+//
+//let result = findIndex(arrayOne, target: target)
+//print(result)
+
+
+//------------------------------------------------------------22-WHILE-----------------------------------------------------------
+
+//WHILE
+//var arrayOne = [1, 2, 3, 4, 6, 8, 9]
+//var target = 7
+//func findIndex(_ array: [Int], target: Int) -> Int {
+//    var result = Int()
+//    var index = Int()
+//    while index < array.endIndex {
+//        if array.index(after: index) < array.endIndex {
+//            if target > array[index] && target < array[array.index(after: index)] {
+//                result = (index + 1)
+//                break
+//            }
+//        }
+//        if target == array[index] {
+//            result = index
+//            break
+//        }
+//        if index == 0 && target < array[index] {
+//            result = array.startIndex
+//            break
+//        }
+//        if array.index(after: index) == array.endIndex && result == 0 {
+//            result = array.endIndex
+//            break
+//        }
+//        index += 1
+//    }
+//return result
+//}
+//
+//let result = findIndex(arrayOne, target: target)
+//print(result)
+
+//------------------------------------------------------------23-----------------------------------------------------------------
+
+//23. Написать функцию которая умножает каждый элемент на индекс
+//
+//[1, 2, 3, 4] -> [1 * 0, 2 * 1, 3 * 2, 4 * 3] -> [0, 2, 6, 12]
+//
+//func multiplyIndex(_ array: [Int]) -> [Int] {
+//}
+
+//------------------------------------------------------------23-FOR-------------------------------------------------------------
+
+//FOR:
+//var arrayOne = [1, 2, 3, 4]
+//func multiplyIndex(_ array: inout [Int]) {
+//    for (index, item) in array.enumerated() {
+//        array[index] = (index * item)
+//    }
+//}
+//
+//multiplyIndex(&arrayOne)
+//print(arrayOne)
+
+
+//------------------------------------------------------------23-WHILE-----------------------------------------------------------
+
+//WHILE
+//var arrayOne = [1, 2, 3, 4]
+//func multiplyIndex(_ array: inout [Int]) {
+//    var index = Int()
+//    while index < array.count {
+//        array[index] = index * array[index]
+//        index += 1
+//    }
+//}
+
+//multiplyIndex(&arrayOne)
+//print(arrayOne)
+
+
+//------------------------------------------------------------24-----------------------------------------------------------------
+
+//24. Написать функцию которая возводит каждый элемент в степень по счету
+//
+//
+//[10, 2, 5, 1] -> [10 ^ 1, 2 ^ 2, 5 ^ 3, 1 ^ 4] -> [10, 4, 125, 1]
+//
+//func multiplyPower(_ array: [Int]) -> [Int] {
+//}
+
+//------------------------------------------------------------24-FOR-------------------------------------------------------------
+
+//FOR:
+//var arrayOne = [10, 2, 5, 1]
+//func multiplyIndex(_ array: inout [Int]) {
+//    for (index, item) in array.enumerated() {
+//        array[index] = Int(pow(Float(item), Float(index + 1)))
+//    }
+//}
+//
+//multiplyIndex(&arrayOne)
+//print(arrayOne)
+
+
+//------------------------------------------------------------24-WHILE-----------------------------------------------------------
+
+//WHILE
+//var arrayOne = [10, 2, 5, 1]
+//func multiplyIndex(_ array: inout [Int]) {
+//    var index = Int()
+//    while index < array.count {
+//        array[index] = Int(pow(Float(array[index]), Float(index + 1)))
+//        index += 1
+//    }
+//}
+//
+//multiplyIndex(&arrayOne)
+//print(arrayOne)
+
+//------------------------------------------------------------25-(косяк в условии)-----------------------------------------------------------------
+//Преобразование строки в массив
+//"abc" ->  ["a","b","c"]
+
+//let string = "abcdefgh"
+//let array: [Character] = Array(string)
+
+//Преобразование массива в строку
+// ["a","b","c"] ->  "abc"
+
+//let array: [Character] = ["a","b","c"]
+//let string1 = String(array)
+
+//25. Написать функцию которая конвертирует строку в массив Character и добавляет индекс
+//
+//"abcd" -> ["a", "b", "c", "d"]
+//
+//func convertToArray(_ string: String) -> Array<Character> {
+//}
+
+//------------------------------------------------------------25-FOR-------------------------------------------------------------
+
+//FOR:
+//var str = "abcd"
+//func convertToArray(_ string: String) -> Array<Character> {
+//    var result: [Character] = []
+//    for item in string {
+//        result.append(item)
+//    }
+//    return result
+//}
+//
+//let result = convertToArray(str)
+//print(result)
+
+
+//------------------------------------------------------------25-WHILE-----------------------------------------------------------
+
+//WHILE
+//var str = "abcd"
+//func convertToArray(_ string: String) -> Array<Character> {
+//    var index = string.startIndex
+//    var result: [Character] = []
+//    while index < string.endIndex {
+//        result.append(string[index])
+//        index = string.index(after: index)
+//    }
+//    return result
+//}
+//
+//let result = convertToArray(str)
+//print(result)
+
+
+//------------------------------------------------------------26-----------------------------------------------------------------
+//26. Написать функцию которая конвертирует строку в массив Character и добавляет индекс
+//
+//"abcd" -> ["a0", "b1", "c2", "d3"]
+//
+//func convertToArray(_ string: String) -> Array<String> {
+//}
+
+//------------------------------------------------------------26-FOR-------------------------------------------------------------
+
+//FOR:
+//var str = "abcd"
+//func convertToArray(_ string: String) -> Array<String> {
+//    var result: [String] = []
+//    for (index,item) in string.enumerated() {
+//        result.append("\(item)\(index)")
+//    }
+//    return result
+//}
+//
+//let result = convertToArray(str)
+//print(result)
+
+
+//------------------------------------------------------------26-WHILE-----------------------------------------------------------
+
+//WHILE
+//var str = "abcd"
+//func convertToArray(_ string: String) -> Array<String> {
+//    var result: [String] = []
+//    var index = string.startIndex
+//    while index < string.endIndex {
+//        result.append("\(string[index])\(string.distance(from: string.startIndex, to: index))")
+//        index = string.index(after: index)
+//    }
+//    return result
+//}
+//
+//let result = convertToArray(str)
+//print(result)
+
+//преобразование String.index в Int только через функцию строки вычисленияя "distance"
+
+
+//------------------------------------------------------------27-----------------------------------------------------------------
+//27. Удалить первый и последний элемент строки
+//
+//"place" -> "lac"
+//
+//func removeFirstLast(_ string: String) -> String {
+//}
+
+//------------------------------------------------------------27-FOR-------------------------------------------------------------
+
+//FOR:
+//var str = "place"
+//func removeFirstLast(_ string: inout String) {
+//    let arrChar:[Character] = Array(string)
+//    string.removeAll()
+//    for (index, item) in arrChar.enumerated() {
+//        if index == 0 || index == arrChar.count - 1 {
+//            continue
+//        } else {
+//            string.append(item)
+//        }
+//    }
+//}
+//
+//removeFirstLast(&str)
+//print(str)
+
+
+//------------------------------------------------------------27-WHILE-----------------------------------------------------------
+
+//WHILE
+//var str = "place"
+//func removeFirstLast(_ string: inout String) {
+//    var index = string.startIndex
+//    while index < string.endIndex {
+//        if index == string.startIndex {
+//            string.remove(at: index)
+//        }
+//        if index == string.index(before: string.endIndex){
+//            string.remove(at: index)
+//            break
+//        }
+//            index = string.index(after: index)
+//    }
+//}
+//
+//removeFirstLast(&str)
+//print(str)
+
+
+//------------------------------------------------------------28-----------------------------------------------------------------
+//28. Удалить элемент строки по-середине
+//
+//"place" -> "plce"
+//
+//func removeCenter(_ string: String) -> String {
+//}
+//------------------------------------------------------------28-FOR-------------------------------------------------------------
+
+//FOR:
+//var str = "place"
+//func removeFirstLast(_ string: inout String) {
+//    var arrChar: [Character] = Array(string)
+//    if arrChar.count % 2 == 0 {
+//        return
+//    }
+//    string.removeAll()
+//    let centerIndex = (arrChar.count - 1)/2
+//    for (index, item) in arrChar.enumerated() {
+//        if index == centerIndex {
+//            continue
+//        }
+//        string.append(item)
+//    }
+//}
+//
+//removeFirstLast(&str)
+//print(str)
+
+
+//------------------------------------------------------------28-WHILE-----------------------------------------------------------
+
+//WHILE
+//var str = "place"
+//func removeFirstLast(_ string: inout String) {
+//    var index = string.startIndex
+//    if string.distance(from: string.startIndex, to: string.endIndex) % 2 == 0 {
+//        return
+//    }
+//    while index < string.endIndex {
+//        if index == string.index(string.startIndex, offsetBy: ((string.distance(from: string.startIndex, to: string.endIndex)-1)/2)) {
+//            string.remove(at: index)
+//        }
+//       index = string.index(after: index)
+//    }
+//}
+//
+//removeFirstLast(&str)
+//print(str)
+
+//------------------------------------------------------------29-----------------------------------------------------------------
+//29. Суммировать четные числа
+//
+//[4, 3, 1, 2, 5, 10, 6, 7, 9, 8]  -> 4 + 2 + 10 + 6 + 8 -> 30
+//
+//func sumEvenNumbers(array: [Int]) -> Int {
+//}
+//------------------------------------------------------------29-FOR-------------------------------------------------------------
+
+//FOR:
+//var str = "place"
+//func removeFirstLast(_ string: inout String) {
+//    var arrChar: [Character] = Array(string)
+//    if arrChar.count % 2 == 0 {
+//        return
+//    }
+//    string.removeAll()
+//    let centerIndex = (arrChar.count - 1)/2
+//    for (index, item) in arrChar.enumerated() {
+//        if index == centerIndex {
+//            continue
+//        }
+//        string.append(item)
+//    }
+//}
+//
+//removeFirstLast(&str)
+//print(str)
+
+
+//------------------------------------------------------------29-WHILE-----------------------------------------------------------
+
+//WHILE
+//var str = "place"
+//func removeFirstLast(_ string: inout String) {
+//    var index = string.startIndex
+//    if string.distance(from: string.startIndex, to: string.endIndex) % 2 == 0 {
+//        return
+//    }
+//    while index < string.endIndex {
+//        if index == string.index(string.startIndex, offsetBy: ((string.distance(from: string.startIndex, to: string.endIndex)-1)/2)) {
+//            string.remove(at: index)
+//        }
+//       index = string.index(after: index)
+//    }
+//}
+//
+//removeFirstLast(&str)
+//print(str)
