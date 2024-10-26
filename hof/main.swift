@@ -1452,3 +1452,254 @@ import Foundation
 //
 //let result = sumEvenNumbers(array: arrayOne)
 //print(result)
+
+//------------------------------------------------------------31-----------------------------------------------------------------
+//31. Дана последовательность, найти сколько пропущено между минимальным и максимальным элементом массива
+//(contains)
+//
+//[4,6,8] -> 2 (5, 6)
+//[1,2,3,4,6] -> 1 (5)
+//[1,2,3] -> 0 ()
+//
+//func consecutive(_ array: [Int]) -> Int {
+//}
+//------------------------------------------------------------31-FOR-------------------------------------------------------------
+
+//FOR:
+//var arrayOne = [4,6,8]
+//func consecutive(_ array: [Int]) -> Int {
+//    var arrIndex = Int()
+//    var counter = Int()
+//    for item in array {
+//        if (arrIndex + 1) < array.count {
+//            counter += (item + 1) != array[arrIndex + 1] ? 1 : 0
+//        }
+//        arrIndex += 1
+//    }
+//    return counter
+//}
+//
+//
+//let result = consecutive(arrayOne)
+//print(result)
+
+
+//------------------------------------------------------------31-WHILE-----------------------------------------------------------
+
+//WHILE
+//var arrayOne = [1,2,3,4,6]
+//func consecutive(_ array: [Int]) -> Int {
+//    var arrIndex = Int()
+//    var counter = Int()
+//    while arrIndex < array.count {
+//        if (arrIndex + 1) < array.count {
+//            counter += (array[arrIndex] + 1) != array[arrIndex + 1] ? 1 : 0
+//        }
+//        arrIndex += 1
+//    }
+//    return counter
+//}
+//
+//
+//let result = consecutive(arrayOne)
+//print(result)
+
+
+//------------------------------------------------------------32-----------------------------------------------------------------
+//32. Вытащить максимальные элементы из массива в заданном количестве
+//
+//largest(3, [7,6,5,4,3,2,1]) -> [7,6,5]
+//
+//func largest(count: Int, array: [Int]) -> [Int] {
+//}
+//------------------------------------------------------------32-FOR-------------------------------------------------------------
+
+//FOR:
+//var arrayOne = [7,6,5,4,3,2,1]
+//func largest(count: Int, array: [Int]) -> [Int] {
+//    var result: [Int] = []
+//    var countArr = count
+//    let newArr = array.sorted { $0 > $1 }
+//    for item in newArr {
+//        if countArr > 0 {
+//            result.append(item)
+//            countArr -= 1
+//        }
+//    }
+//    return result
+//}
+//
+//
+//let result = largest(count: 3, array: arrayOne)
+//print(result)
+
+
+//------------------------------------------------------------32-WHILE-----------------------------------------------------------
+
+//WHILE
+//var arrayOne = [7,6,5,4,3,2,1]
+//func largest(count: Int, array: [Int]) -> [Int] {
+//    var result: [Int] = []
+//    var index = Int()
+//    let newArr = array.sorted { $0 > $1 }
+//    while index < newArr.count {
+//        index < count ? result.append(newArr[index]) : () //немного зачител узнав как узнать что бы ничего не делалось
+//        index += 1
+//    }
+//    return result
+//}
+//
+//
+//let result = largest(count: 3, array: arrayOne)
+//print(result)
+
+//------------------------------------------------------------33-----------------------------------------------------------------
+//33. По какоми индексу вставить число в отсортированном массиве
+//
+//([1, 2, 3, 4, 7], 5) -> 4
+//([1, 2, 3, 4, 7], 0) -> 0
+//([1, 1, 2, 2, 2], 2) -> 2
+//
+//func keepOrder(array: [Int], element: Int) -> Int {
+//}
+//------------------------------------------------------------33-FOR-------------------------------------------------------------
+
+//FOR:
+//let arrayOne = [1, 2, 3, 4, 7]
+//let element = 5
+//
+//func keepOrder(array: [Int], element: Int) -> Int {
+//    for (index, item) in array.enumerated() {
+//        if (index + 1) < array.count {
+//            if element > item && element <= array[index + 1] {
+//                return index + 1
+//            }
+//        }
+//    }
+//    return 0
+//}
+//
+//let result = keepOrder(array: arrayOne, element: element)
+//print(result)
+
+
+//------------------------------------------------------------33-WHILE-----------------------------------------------------------
+
+//WHILE
+//let arrayOne = [1, 1, 2, 2, 2]
+//let element = 2
+//
+//func keepOrder(array: [Int], element: Int) -> Int {
+//    var index = Int()
+//    while index < array.count {
+//        if (index + 1) < array.count {
+//            if element > array[index] && element <= array[index + 1] {
+//                return index + 1
+//            }
+//        }
+//        index += 1
+//    }
+//    return 0
+//}
+//
+//let result = keepOrder(array: arrayOne, element: element)
+//print(result)
+
+//------------------------------------------------------------34-----------------------------------------------------------------
+//34. Порезать строку
+//
+//trim("He", 1) -> "H..."
+//
+//func trim(_ string: String, _ num: Int) -> String {
+//}
+//------------------------------------------------------------34-FOR-------------------------------------------------------------
+
+//FOR:
+//let str = "Не"
+//let num = 1
+//
+//func trim(_ string: String, _ num: Int) -> String {
+//    let arrChr: [Character] = Array(string)
+//    var result = String()
+//    for (index, item) in arrChr.enumerated() {
+//        if (index) >= num {
+//            result.append("...")
+//            return result
+//        }
+//        result.append(item)
+//    }
+//    return result
+//}
+//
+//let result = trim(str, num)
+//print(result)
+
+
+
+
+//------------------------------------------------------------34-WHILE-----------------------------------------------------------
+
+//WHILE
+//let str = "Не"
+//let num = 1
+//
+//func trim(_ string: String, _ num: Int) -> String {
+//    let arrChr: [Character] = Array(string)
+//    var result = String()
+//    var index = Int()
+//    while index < arrChr.count {
+//        if (index) >= num {
+//            result.append("...")
+//            return result
+//        }
+//        result.append(arrChr[index])
+//        index += 1
+//    }
+//    return result
+//}
+//
+//let result = trim(str, num)
+//print(result)
+
+//------------------------------------------------------------35-----------------------------------------------------------------
+//35. Каждый элемент поделить на порядок в массиве и суммировать
+//
+//[3,4,6] -> ( 3 / 1 ) + ( 4 / 2 ) + ( 6 / 3 ) = 7
+//
+//func add(array: [Int]) -> Int {
+//}
+//------------------------------------------------------------35-FOR-------------------------------------------------------------
+
+//FOR:
+//let arrayOne = [3,4,6]
+//
+//func add(array: [Int]) -> Int {
+//    var result = Int()
+//    for (index, item) in array.enumerated() {
+//        result += item / (index + 1)
+//    }
+//    return result
+//}
+//
+//
+//let result = add(array: arrayOne)
+//print(result)
+
+//------------------------------------------------------------35-WHILE-----------------------------------------------------------
+
+//WHILE
+//let arrayOne = [3,4,6]
+//
+//func add(array: [Int]) -> Int {
+//    var result = Int()
+//    var index = Int()
+//    while index < array.count {
+//        result += array[index] / (index + 1)
+//        index += 1
+//    }
+//    return result
+//}
+//
+//
+//let result = add(array: arrayOne)
+//print(result)
