@@ -1814,44 +1814,206 @@ import Foundation
 //------------------------------------------------------------37-FOR-------------------------------------------------------------
 
 //FOR:
-//let arrayOne = [1,2,3,4,5]
-//func removeSmallest(_ array: [Int]) -> [Int] {
-//    guard let first = array.first else {return []}
-//    var smallValue = first
-//    for item in array {
-//        smallValue = smallValue > item ? item : smallValue
+//let arrayOne = [1, 2, 3]
+//let arrayTwo = [4, 5]
+//func sumArrays(lhs: [Int], rhs: [Int]) -> [Int] {
+//    var arrOne = lhs
+//    var arrTwo = rhs
+//    for item in arrTwo {
+//        arrOne.append(item)
 //    }
-//    var resultArr = [Int]()
-//    for item in array {
-//        item == smallValue ? () : resultArr.append(item)
-//    }
-//    return resultArr
+//    return arrOne
 //}
 //
 //
-//let result = removeSmallest(arrayOne)
+//let result = sumArrays(lhs: arrayOne, rhs: arrayTwo)
 //print(result)
 
 //------------------------------------------------------------37-WHILE-----------------------------------------------------------
 
 //WHILE
-//let arrayOne = [0,1,0,1,0]
-//func removeSmallest(_ array: [Int]) -> [Int] {
-//    guard let first = array.first else {return []}
-//    var smallValue = first
+//let arrayOne = [1, 2, 3]
+//let arrayTwo = [4, 5]
+//func sumArrays(lhs: [Int], rhs: [Int]) -> [Int] {
+//    var arrOne = lhs
+//    var arrTwo = rhs
 //    var index = Int()
-//    while index < array.count {
-//        smallValue = smallValue > array[index] ? array[index] : smallValue
+//    while index < arrTwo.count {
+//        arrOne.append(arrTwo[index])
 //        index += 1
 //    }
-//    index = 0
-//    var resultArr = [Int]()
-//    while index < array.count {
-//        smallValue == array[index] ? () : resultArr.append(array[index])
-//        index += 1
-//    }
-//    return resultArr
+//    return arrOne
 //}
 //
-//let result = removeSmallest(arrayOne)
+//
+//let result = sumArrays(lhs: arrayOne, rhs: arrayTwo)
 //print(result)
+
+//------------------------------------------------------------способы сложения массивов:-----------------------------------------------------------
+//1
+//let arrayOne = [1, 2, 3]
+//let arrayTwo = [4, 5]
+//let arrayThree = arrayOne + arrayTwo
+//print(arrayThree)
+//2
+//var arrayOne = [1, 2, 3]
+//let arrayTwo = [4, 5]
+//arrayOne.append(contentsOf: arrayTwo)
+//print(arrayOne)
+//3
+//var arrayOne = [1, 2, 3]
+//let arrayTwo = [4, 5]
+//arrayOne.append(contentsOf: arrayTwo)
+//print(arrayOne)
+
+//------------------------------------------------------------38-----------------------------------------------------------------!!!!!!
+//38. Вернуть первый непоследовательный элемент и его индекс
+//
+//[1, 2, 3, 4, 5, 7, 8, 9] -> (7, 5)
+//
+//func firstNonConsequitive(array: [Int]) -> (Int, Int) {
+//}
+//------------------------------------------------------------38-FOR-------------------------------------------------------------
+
+//FOR:
+//let arrayOne = [1, 2, 3, 4, 5, 7, 8, 9]
+//func firstNonConsequitive(array: [Int]) -> (Int, Int) {
+//
+//    guard let first = array.first else {return (0, 0)}
+//    var result = (first, Int())
+//
+//    for (index, item) in array.enumerated() {
+//        if (index + 1) < array.count {
+//            result = ((item + 1) != array[index + 1] ? array[index + 1] : result.0, (item + 1) != array[index + 1] ? (index + 1) : result.1)
+//        }
+//    }
+//    return result
+//}
+//
+//let result = firstNonConsequitive(array: arrayOne)
+//print(result)
+//------------------------------------------------------------38-WHILE-----------------------------------------------------------
+
+//WHILE
+//let arrayOne = [1, 2, 3, 4, 5, 7, 8, 9]
+//func firstNonConsequitive(array: [Int]) -> (Int, Int) {
+//    guard let first = array.first else {return (0, 0)}
+//    var result = (first, Int())
+//    var index = 0
+//    while index < array.count {
+//        if (index + 1) < array.count {
+//            result = ((array[index] + 1) != array[index + 1] ? array[index + 1] : result.0, (array[index] + 1) != array[index + 1] ? (index + 1) : result.1)
+//        }
+//        index += 1
+//    }
+//    return result
+//}
+//
+//let result = firstNonConsequitive(array: arrayOne)
+//print(result)
+
+//------------------------------------------------------------39-----------------------------------------------------------------!!!!!!
+//39. Проверить что массив монотонно убывающий
+//
+//[10, 9, 8, 7, 6, 6, 5] -> true
+//[10, 9, 8, 8, 7, 9] -> false
+//[10,10,10] -> true
+//
+//func isIncreasing(array: [Int]) -> Bool {
+//}
+//------------------------------------------------------------39-FOR-------------------------------------------------------------
+
+//FOR:
+//let arrayOne = [10,10,10]
+//func isIncreasing(array: [Int]) -> Bool {
+//    for (index, item) in array.enumerated() {
+//        if (index + 1) < array.count {
+//            if item >= array[index + 1] { continue } else {
+//                return false
+//            }
+//        }
+//    }
+//    return true
+//}
+//
+//let result = isIncreasing(array: arrayOne)
+//print(result)
+//------------------------------------------------------------39-WHILE-----------------------------------------------------------
+
+//WHILE
+//let arrayOne = [10, 9, 8, 7, 6, 6, 5]
+//func isIncreasing(array: [Int]) -> Bool {
+//    var index = Int()
+//    while index < array.count {
+//        if (index + 1) < array.count {
+//            let item = array[index] >= array[index + 1] ? true : false
+//            if !item {
+//                return false
+//            }
+//        }
+//        index += 1
+//    }
+//    return true
+//}
+//
+//let result = isIncreasing(array: arrayOne)
+//print(result)
+
+//------------------------------------------------------------ЗАПОМНИТЬ-----------------------------------------------------------
+//Как хранить оператор сравнения больше/меньше  в переменной
+//var comparator: (Double, Double) -> Bool = (<)
+//let result = comparator(1.0, 2.0)
+//print(result)
+//------------------------------------------------------------ЗАПОМНИТЬ-----------------------------------------------------------
+
+//------------------------------------------------------------40-----------------------------------------------------------------!!!!!!
+//40. Написать функцию которая принимает массив чисел и проверяет монотонный он или нет
+//
+//
+//[1,3,6,8] → true
+//[6, 3, 2, 1] → true
+//[5,5] → true
+//[1, 2, 2, 5, 5, 7] → true
+//[1, 2, 3, 3, 3, 1] → false
+//[5, 4, 3, 2, 1, 2, 3] → false
+//
+//func isMonotone(_ array: [Int]) -> Bool { //ошибка
+//}
+//------------------------------------------------------------40-FOR-------------------------------------------------------------Несделан
+
+//FOR:
+//let arrayOne = [1,3,6,8]
+//func isMonotone(_ array: [Int]) -> Bool {
+//    var upChecker: (Int, Int) -> Bool = (<=)
+//
+//    for (index, item) in array.enumerated() {
+//        if (index + 1) < array.count {
+//            let first =
+//        }
+//    }
+//    return true
+//}
+//
+//let result = isMonotone(arrayOne)
+//print(result)
+//------------------------------------------------------------40-WHILE-----------------------------------------------------------
+
+//WHILE
+//let arrayOne = [10, 9, 8, 7, 6, 6, 5]
+//func isIncreasing(array: [Int]) -> Bool {
+//    var index = Int()
+//    while index < array.count {
+//        if (index + 1) < array.count {
+//            let item = array[index] >= array[index + 1] ? true : false
+//            if !item {
+//                return false
+//            }
+//        }
+//        index += 1
+//    }
+//    return true
+//}
+//
+//let result = isIncreasing(array: arrayOne)
+//print(result)
+
