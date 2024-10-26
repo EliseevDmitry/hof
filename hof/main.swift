@@ -960,7 +960,7 @@ import Foundation
 //        array[index].squareRoot().truncatingRemainder(dividingBy: 1) == 0 ? (array[index] = array[index].squareRoot()) : (array[index] = pow(array[index], 2))
 //        index += 1
 //    }
-//    
+//
 //}
 //
 //rootOrSquare(&arrayOne)
@@ -1688,7 +1688,7 @@ import Foundation
 //------------------------------------------------------------35-WHILE-----------------------------------------------------------
 
 //WHILE
-//let arrayOne = [3,4,6]
+//let arrayOne = [1,4,-6,20]
 //
 //func add(array: [Int]) -> Int {
 //    var result = Int()
@@ -1702,4 +1702,156 @@ import Foundation
 //
 //
 //let result = add(array: arrayOne)
+//print(result)
+
+
+
+//4 способа создания пустого массива
+
+//var array1: [Int] = []
+//var array2: Array<Int> = []
+//var array3 = [Int]()
+//var array4 = Array<Int>()
+//
+//Напиши все способы создания пустого и заполненного - Array
+
+//var array1: [Int] = []
+//var array2: Array<Int> = []
+//var array3 = [Int]()
+//var array4 = Array<Int>()
+//var array5: Array = [] as Array<Int>
+//var array6: Array = Array<Int>()
+//var array7 = [] as [Int]
+//var array8: [Int] = Array()
+//var array9 = Array() as [Int]
+//var array10 = Array<Int>.init()
+//var array11 = Array<Int>([])
+
+//Напиши все способы создания пустого и заполненного - Set
+
+//var setOne: Set<Int> = []
+//var setTwo = Set<Int>()
+//var setThree: Set = Set<Int>()
+//var setFour: Set<Int> = Set()
+//var setFive = Set<Int>()
+//var setSix = [] as Set<Int>
+//var setSeven = Set<Int>([])
+//var setEight = Set<Int>.init()
+
+//Напиши все способы создания пустого и заполненного - Dictionary
+
+//var dictOne = [String : Int]()
+//var dictTwo = [String() : Int()]
+//var dictFour: [String : Int] = [:]
+//var dictFive = Dictionary<String, Int>()
+//var dictSix = Dictionary<String, Int>.init()
+//var dictSeven: [AnyHashable : Int] = [:]
+
+
+//------------------------------------------------------------36-----------------------------------------------------------------
+//36. Найти минимальный элемент в массиве и удалить его из массива
+//
+//func removeSmallest(_ array: [Int]) -> [Int] {
+//}
+//
+//[1,2,3,4,5] -> [2,3,4,5]
+//[5,3,2,1,4] -> [5,3,2,4]
+//[2,1,2,1,2,1] -> [2,2,2]
+//[0,1,0,1,0] -> [1,1]
+//------------------------------------------------------------36-FOR-------------------------------------------------------------
+
+//FOR:
+//let arrayOne = [1,2,3,4,5]
+//func removeSmallest(_ array: [Int]) -> [Int] {
+//    guard let first = array.first else {return []}
+//    var smallValue = first
+//    for item in array {
+//        smallValue = smallValue > item ? item : smallValue
+//    }
+//    var resultArr = [Int]()
+//    for item in array {
+//        item == smallValue ? () : resultArr.append(item)
+//    }
+//    return resultArr
+//}
+//
+//
+//let result = removeSmallest(arrayOne)
+//print(result)
+
+//------------------------------------------------------------36-WHILE-----------------------------------------------------------
+
+//WHILE
+//let arrayOne = [0,1,0,1,0]
+//func removeSmallest(_ array: [Int]) -> [Int] {
+//    guard let first = array.first else {return []}
+//    var smallValue = first
+//    var index = Int()
+//    while index < array.count {
+//        smallValue = smallValue > array[index] ? array[index] : smallValue
+//        index += 1
+//    }
+//    index = 0
+//    var resultArr = [Int]()
+//    while index < array.count {
+//        smallValue == array[index] ? () : resultArr.append(array[index])
+//        index += 1
+//    }
+//    return resultArr
+//}
+//
+//let result = removeSmallest(arrayOne)
+//print(result)
+
+
+//------------------------------------------------------------37-----------------------------------------------------------------!!!!!!
+//37. Один массив прибавить ко второму массиву - все способы
+//
+//[1, 2, 3] + [4, 5] -> [1, 2, 3, 4, 5]
+//
+//func sumArrays(lhs: [Int], rhs: [Int]) -> [Int] {
+//}
+//------------------------------------------------------------37-FOR-------------------------------------------------------------
+
+//FOR:
+//let arrayOne = [1,2,3,4,5]
+//func removeSmallest(_ array: [Int]) -> [Int] {
+//    guard let first = array.first else {return []}
+//    var smallValue = first
+//    for item in array {
+//        smallValue = smallValue > item ? item : smallValue
+//    }
+//    var resultArr = [Int]()
+//    for item in array {
+//        item == smallValue ? () : resultArr.append(item)
+//    }
+//    return resultArr
+//}
+//
+//
+//let result = removeSmallest(arrayOne)
+//print(result)
+
+//------------------------------------------------------------37-WHILE-----------------------------------------------------------
+
+//WHILE
+//let arrayOne = [0,1,0,1,0]
+//func removeSmallest(_ array: [Int]) -> [Int] {
+//    guard let first = array.first else {return []}
+//    var smallValue = first
+//    var index = Int()
+//    while index < array.count {
+//        smallValue = smallValue > array[index] ? array[index] : smallValue
+//        index += 1
+//    }
+//    index = 0
+//    var resultArr = [Int]()
+//    while index < array.count {
+//        smallValue == array[index] ? () : resultArr.append(array[index])
+//        index += 1
+//    }
+//    return resultArr
+//}
+//
+//let result = removeSmallest(arrayOne)
 //print(result)
