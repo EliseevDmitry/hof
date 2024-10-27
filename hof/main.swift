@@ -1982,13 +1982,35 @@ import Foundation
 //------------------------------------------------------------40-FOR-------------------------------------------------------------Несделан
 
 //FOR:
-//let arrayOne = [1,3,6,8]
+//let arrayOne = [5, 4, 3, 2, 1, 2, 3]
 //func isMonotone(_ array: [Int]) -> Bool {
-//    var upChecker: (Int, Int) -> Bool = (<=)
-//
+//    var upChecker: (Int, Int) -> Bool = (<=)  //СПРОСИТЬ
+//    if array.count == 0 || array.count == 1 {
+//        return true
+//    }
 //    for (index, item) in array.enumerated() {
 //        if (index + 1) < array.count {
-//            let first =
+//            if item < array[array.index(after: array.startIndex)] {
+//                upChecker = (<=)
+//                break
+//            } else if item > array[array.index(after: array.startIndex)] {
+//                upChecker = (>=)
+//                break
+//            } else if item == array[array.index(after: array.startIndex)] {
+//                if index == array.count - 1 {
+//                    return true
+//                } else {
+//                    continue
+//                }
+//            }
+//        }
+//    }
+//    for (index, item) in array.enumerated() {
+//        if (index + 1) < array.count {
+//            let result = upChecker(item, array[index + 1])
+//            if !result {
+//                return false
+//            }
 //        }
 //    }
 //    return true
@@ -1999,13 +2021,36 @@ import Foundation
 //------------------------------------------------------------40-WHILE-----------------------------------------------------------
 
 //WHILE
-//let arrayOne = [10, 9, 8, 7, 6, 6, 5]
-//func isIncreasing(array: [Int]) -> Bool {
-//    var index = Int()
+//let arrayOne = [1,3,6,8]
+//func isMonotone(_ array: [Int]) -> Bool {
+//    var upChecker: (Int, Int) -> Bool = (<=)  //СПРОСИТЬ
+//    if array.count == 0 || array.count == 1 {
+//        return true
+//    }
+//    var index = 0
 //    while index < array.count {
 //        if (index + 1) < array.count {
-//            let item = array[index] >= array[index + 1] ? true : false
-//            if !item {
+//            if array[index] < array[index + 1] {
+//                upChecker = (<=)
+//                break
+//            } else if array[index] > array[index + 1]  {
+//                upChecker = (>=)
+//                break
+//            } else if array[index] == array[index + 1]  {
+//                if index == array.count - 1 {
+//                    return true
+//                } else {
+//                    continue
+//                }
+//            }
+//        }
+//        index += 1
+//    }
+//    index = 0
+//    while index < array.count {
+//        if (index + 1) < array.count {
+//            let result = upChecker(array[index], array[index + 1])
+//            if !result {
 //                return false
 //            }
 //        }
@@ -2014,6 +2059,169 @@ import Foundation
 //    return true
 //}
 //
-//let result = isIncreasing(array: arrayOne)
+//let result = isMonotone(arrayOne)
 //print(result)
 
+//------------------------------------------------------------41-----------------------------------------------------------------
+//41. Маскировать кредитную карту
+//
+//"12345678" -> "****4678" //опечатка в задании
+//"1234" -> "1234"
+//"123456" -> "**3456"
+//
+//func masked(string: String) -> String {
+//}
+//------------------------------------------------------------41-FOR-------------------------------------------------------------
+//FOR:
+//let str = "12345678"
+//func masked(string: String) -> String {
+//    var newString = String()
+//    var index = 0
+//    for (index, item) in string.reversed().enumerated() {
+//        if index < 4 {
+//            newString.append(item)
+//        } else {
+//            newString.append("*")
+//        }
+//    }
+//    return String(newString.reversed())
+//}
+//
+//let result = masked(string: str)
+//print(result)
+//------------------------------------------------------------41-WHILE-----------------------------------------------------------
+
+//WHILE
+//let str = "12345678"
+//func masked(string: String) -> String {
+//    var newString = String()
+//    var index = string.index(before: string.endIndex)
+//
+//    while index >= string.startIndex {
+//        if string.distance(from: index, to: string.endIndex) < 5 {
+//            newString.insert(string[index], at: newString.startIndex)
+//        } else {
+//            newString.insert("*", at: newString.startIndex)
+//        }
+//        if index != string.startIndex {
+//            index = string.index(before: index)
+//        } else {
+//            break
+//        }
+//    }
+//    return newString
+//}
+//
+//let result = masked(string: str)
+//print(result)
+
+//------------------------------------------------------------42-----------------------------------------------------------------
+//42. Сконвертироват значение типа Any в тип данных Int
+//
+//func someToInt(_ value: Any) → Int {
+//
+//        if let value = value as? Int {
+//                return value
+//        }
+//        return 0
+//}
+//------------------------------------------------------------42-FOR-------------------------------------------------------------
+//FOR:
+//let arrayOne: [Any] = [1, "4", "Hello", Character("x"), 2.5]
+//
+//func conver(array: [Any]) -> [Int] {
+//    var newArr = [Int]()
+//    for item in array {
+//        newArr.append(someToInt(item))
+//    }
+//    return newArr
+//}
+//
+//func someToInt(_ value: Any) -> Int {
+//    if let value = value as? Int {
+//        return value
+//    }
+//    return 0
+//}
+//
+//let result = conver(array: arrayOne)
+//print(result)
+//------------------------------------------------------------42-WHILE-----------------------------------------------------------
+
+//WHILE
+//let arrayOne: [Any] = [1, "4", "Hello", Character("x"), 2.5]
+//
+//func conver(array: [Any]) -> [Int] {
+//    var newArr = [Int]()
+//    var index = Int()
+//    while index < array.count {
+//        newArr.append(someToInt(array[index]))
+//        index += 1
+//    }
+//    return newArr
+//}
+//
+//func someToInt(_ value: Any) -> Int {
+//    if let value = value as? Int {
+//        return value
+//    }
+//    return 0
+//}
+//
+//let result = conver(array: arrayOne)
+//print(result)
+
+//------------------------------------------------------------42-----------------------------------------------------------------
+//43. Написать фукнцию суммирования всех элементов массива неопределенных элементов (использовать интерполяцию или type casting)
+//
+//["1", 2, 3.5, Character(4)] -> 10.5 //ошибка Character("4")
+//
+//
+//func sumOfValues(array: [Any]) -> Double {
+//}
+//------------------------------------------------------------42-FOR-------------------------------------------------------------
+//FOR:
+let arrayOne: [Any] = ["1", 2, 3.5, Character("4")]
+
+func conver(array: [Any]) -> Double {
+    var result = Double()
+    for item in array {
+        if let element = someToDouble(item) {
+            result += element
+        }
+    }
+    return result
+}
+
+func someToDouble(_ value: Any) -> Double? {
+    let newValue = value as? String
+    return newValue as? Double ?? nil
+    
+}
+
+let result = conver(array: arrayOne)
+print(result)
+//------------------------------------------------------------42-WHILE-----------------------------------------------------------
+
+//WHILE
+//let arrayOne: [Any] = [1, "4", "Hello", Character("x"), 2.5]
+//
+//func conver(array: [Any]) -> [Int] {
+//    var newArr = [Int]()
+//    var index = Int()
+//    while index < array.count {
+//        newArr.append(someToInt(array[index]))
+//        index += 1
+//    }
+//    return newArr
+//}
+//
+//func someToInt(_ value: Any) -> Int {
+//    if let value = value as? Int {
+//        return value
+//    }
+//    return 0
+//}
+//
+//let result = conver(array: arrayOne)
+//print(result)
