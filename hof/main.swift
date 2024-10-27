@@ -2171,7 +2171,7 @@ import Foundation
 //let result = conver(array: arrayOne)
 //print(result)
 
-//------------------------------------------------------------42-----------------------------------------------------------------
+//------------------------------------------------------------43-----------------------------------------------------------------
 //43. Написать фукнцию суммирования всех элементов массива неопределенных элементов (использовать интерполяцию или type casting)
 //
 //["1", 2, 3.5, Character(4)] -> 10.5 //ошибка Character("4")
@@ -2179,49 +2179,292 @@ import Foundation
 //
 //func sumOfValues(array: [Any]) -> Double {
 //}
-//------------------------------------------------------------42-FOR-------------------------------------------------------------
+//------------------------------------------------------------43-FOR-------------------------------------------------------------
 //FOR:
-let arrayOne: [Any] = ["1", 2, 3.5, Character("4")]
-
-func conver(array: [Any]) -> Double {
-    var result = Double()
-    for item in array {
-        if let element = someToDouble(item) {
-            result += element
-        }
-    }
-    return result
-}
-
-func someToDouble(_ value: Any) -> Double? {
-    let newValue = value as? String
-    return newValue as? Double ?? nil
-    
-}
-
-let result = conver(array: arrayOne)
-print(result)
-//------------------------------------------------------------42-WHILE-----------------------------------------------------------
-
-//WHILE
-//let arrayOne: [Any] = [1, "4", "Hello", Character("x"), 2.5]
-//
-//func conver(array: [Any]) -> [Int] {
-//    var newArr = [Int]()
-//    var index = Int()
-//    while index < array.count {
-//        newArr.append(someToInt(array[index]))
-//        index += 1
+//let arrayOne: [Any] = ["1", 2, 3.5, Character("4")]
+//func conver(array: [Any]) -> Double {
+//    var result = Double()
+//    for item in array {
+//        if let element = someToDouble(item) {
+//            result += element
+//        }
 //    }
-//    return newArr
+//    return result
 //}
 //
-//func someToInt(_ value: Any) -> Int {
-//    if let value = value as? Int {
-//        return value
+//func someToDouble(_ value: Any) -> Double? {
+//    var result: Double?
+//    if let newValue = value as? String {
+//       result = Double(newValue)
+//    } else if let newValue = value as? Int {
+//        result = Double(newValue)
+//    } else if let newValue = value as? Double{
+//        result = newValue
+//    } else if let newValue = value as? Character {
+//        result = Double(String(newValue))
 //    }
-//    return 0
+//    if result != nil {
+//        return result
+//    }
+//    return nil
 //}
 //
 //let result = conver(array: arrayOne)
+//print(result)
+//------------------------------------------------------------43-WHILE-----------------------------------------------------------
+
+//WHILE
+//let arrayOne: [Any] = ["1", 2, 3.5, Character("4")]
+//func conver(array: [Any]) -> Double {
+//    var result = Double()
+//    var index = Int()
+//    while index < array.count {
+//        if let element = someToDouble(array[index]) {
+//            result += element
+//        }
+//        index += 1
+//    }
+//    return result
+//}
+//
+//func someToDouble(_ value: Any) -> Double? {
+//    var result: Double?
+//    if let newValue = value as? String {
+//       result = Double(newValue)
+//    } else if let newValue = value as? Int {
+//        result = Double(newValue)
+//    } else if let newValue = value as? Double{
+//        result = newValue
+//    } else if let newValue = value as? Character {
+//        result = Double(String(newValue))
+//    }
+//    if result != nil {
+//        return result
+//    }
+//    return nil
+//}
+//
+//let result = conver(array: arrayOne)
+//print(result)
+
+//------------------------------------------------------------44-----------------------------------------------------------------
+//44. Перемешайте массив со сдвигом N
+//
+//[1,1,1,2,2,2], N = 3 -> [1,2,1,2,1,2]
+//
+//func shuffleArray(array: [Int], offset: Int) -> [Int] {
+//}
+//------------------------------------------------------------44-FOR-------------------------------------------------------------
+//FOR:
+//let arrayOne = [1,1,1,2,2,2]
+//let offset = 3
+//func shuffleArray(array: [Int], offset: Int) -> [Int]{
+//    var newArray = [Int]()
+//    var indexes = Set<Int>()
+//    for (index, item) in array.enumerated() {
+//        if !indexes.contains(index) {
+//            indexes.insert(index)
+//            newArray.append(item)
+//            if (index + offset) < array.count {
+//                if !indexes.contains(index + offset) {
+//                    indexes.insert(index + offset)
+//                    newArray.append(array[index + offset])
+//                }
+//            }
+//        }
+//    }
+//    return newArray
+//}
+//
+//let result = shuffleArray(array: arrayOne, offset: offset)
+//print(result)
+//------------------------------------------------------------44-WHILE-----------------------------------------------------------
+
+//WHILE
+//let arrayOne = [1,1,1,2,2,2]
+//let offset = 3
+//func shuffleArray(array: [Int], offset: Int) -> [Int]{
+//    var newArray = [Int]()
+//    var indexes = Set<Int>()
+//    var index = Int()
+//    while index < array.count {
+//        if !indexes.contains(index) {
+//            indexes.insert(index)
+//            newArray.append(array[index])
+//            if (index + offset) < array.count {
+//                if !indexes.contains(index + offset) {
+//                    indexes.insert(index + offset)
+//                    newArray.append(array[index + offset])
+//                }
+//            }
+//        }
+//        index += 1
+//    }
+//    return newArray
+//}
+//
+//let result = shuffleArray(array: arrayOne, offset: offset)
+//print(result)
+
+//------------------------------------------------------------45-----------------------------------------------------------------
+//45. Найти все непоследовательные элементы в массиве
+//
+//[1, 2, 3, 4, 5, 7, 8, 9, 11] -> [7,11]
+//
+//func findFirstNonConsecutive(array: [Int]) -> [Int] {
+//}
+//------------------------------------------------------------45-FOR-------------------------------------------------------------
+//FOR:
+//let arrayOne = [1, 2, 3, 4, 5, 7, 8, 9, 11]
+//func findFirstNonConsecutive(array: [Int]) -> [Int] {
+//    var result = [Int]()
+//    for (index, item) in array.enumerated() {
+//        if (index + 1) < array.count {
+//            if (item + 1) != array[index + 1] {
+//                result.append(array[index + 1])
+//            }
+//        }
+//    }
+//    return result
+//}
+//
+//let result = findFirstNonConsecutive(array: arrayOne)
+//print(result)
+//------------------------------------------------------------45-WHILE-----------------------------------------------------------
+
+//WHILE
+//let arrayOne = [1, 2, 3, 4, 5, 7, 8, 9, 11]
+//func findFirstNonConsecutive(array: [Int]) -> [Int] {
+//    var index = Int()
+//    var result = [Int]()
+//    while index < array.count {
+//        if (index + 1) < array.count {
+//            (array[index] + 1) != array[index + 1] ? result.append(array[index + 1]) : ()
+//        }
+//        index += 1
+//    }
+//    return result
+//}
+//
+//let result = findFirstNonConsecutive(array: arrayOne)
+//print(result)
+
+//------------------------------------------------------------46-----------------------------------------------------------------
+//46. Дан массив цен, нужно найти самый дорогой продукт на котрый хватит хватил кеш
+//
+//13, [3, 10, 300, 15, 3] -> 10
+//
+//func mostExpensive(cash: Int, products: [Int]) -> Int {
+//}
+//------------------------------------------------------------46-FOR-------------------------------------------------------------
+//FOR:
+//let arrayOne =  [3, 10, 300, 15, 3]
+//let cash = 13
+//func mostExpensive(cash: Int, products: [Int]) -> Int {
+//    var newArr: [Int] = []
+//    for item in products {
+//        if item <= cash {
+//            newArr.append(item)
+//        }
+//    }
+//    var maxCash = Int()
+//    for item in newArr {
+//        if maxCash < item {
+//            maxCash = item
+//        }
+//    }
+//    return maxCash
+//}
+//
+//let result = mostExpensive(cash: cash, products: arrayOne)
+//print(result)
+//------------------------------------------------------------46-WHILE-----------------------------------------------------------
+
+//WHILE
+//let arrayOne =  [3, 10, 300, 15, 3]
+//let cash = 11
+//func mostExpensive(cash: Int, products: [Int]) -> Int {
+//    var arrayItems = products
+//var index = Int()
+//    while index < arrayItems.count {
+//        if arrayItems[index] > cash {
+//            arrayItems.remove(at: index)
+//            continue
+//        }
+//        if index + 1 < arrayItems.count {
+//            index += 1
+//        } else {
+//            break
+//        }
+//    }
+//    index = 0
+//    var maxCash = Int()
+//    while index < arrayItems.count {
+//        maxCash = maxCash < arrayItems[index] ? arrayItems[index] : maxCash
+//        index += 1
+//    }
+//    return maxCash
+//}
+//
+//let result = mostExpensive(cash: cash, products: arrayOne)
+//print(result)
+
+//------------------------------------------------------------47-----------------------------------------------------------------
+//47. Дан массив нужно сгруппировать в массив другого вида
+//
+//[1, 2, 2, 3, 3, 3] -> [[1], [2,2], [3, 3, 3]]
+//
+//func groupElements(array: [Int]) -> [[Int]] {
+//}
+//------------------------------------------------------------47-FOR-------------------------------------------------------------
+//FOR:
+//let arrayOne =  [3, 10, 300, 15, 3]
+//let cash = 13
+//func mostExpensive(cash: Int, products: [Int]) -> Int {
+//    var newArr: [Int] = []
+//    for item in products {
+//        if item <= cash {
+//            newArr.append(item)
+//        }
+//    }
+//    var maxCash = Int()
+//    for item in newArr {
+//        if maxCash < item {
+//            maxCash = item
+//        }
+//    }
+//    return maxCash
+//}
+//
+//let result = mostExpensive(cash: cash, products: arrayOne)
+//print(result)
+//------------------------------------------------------------47-WHILE-----------------------------------------------------------
+
+//WHILE
+//let arrayOne =  [3, 10, 300, 15, 3]
+//let cash = 11
+//func mostExpensive(cash: Int, products: [Int]) -> Int {
+//    var arrayItems = products
+//var index = Int()
+//    while index < arrayItems.count {
+//        if arrayItems[index] > cash {
+//            arrayItems.remove(at: index)
+//            continue
+//        }
+//        if index + 1 < arrayItems.count {
+//            index += 1
+//        } else {
+//            break
+//        }
+//    }
+//    index = 0
+//    var maxCash = Int()
+//    while index < arrayItems.count {
+//        maxCash = maxCash < arrayItems[index] ? arrayItems[index] : maxCash
+//        index += 1
+//    }
+//    return maxCash
+//}
+//
+//let result = mostExpensive(cash: cash, products: arrayOne)
 //print(result)
