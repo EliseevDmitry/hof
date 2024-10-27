@@ -6,6 +6,75 @@
 //
 
 import Foundation
+//------------------------------------------------------------1-----------------------------------------------------------------
+//1. Посчитать сумму положительных чисел в массиве
+//
+//[1,-4,7,12] -> 1 + 7 + 12 = 20
+//
+//func sumOfPositives(_ array: [Int]) -> Int {
+//}
+//
+//assert(sumOfPositives([1,-4,7,12]]) == 20)
+
+//------------------------------------------------------------2-FOR-------------------------------------------------------------
+
+//let arr = [1,-4,7,12]
+
+//func sumOfPositives(_ array: [Int]) -> Int {
+//    var counter = 0
+//    for index in array {
+//        if index > 0 {
+//            counter += index
+//        }
+//    }
+//    return counter
+//}
+//
+//let result = sumOfPositives(arr)
+//print(result)
+
+//------------------------------------------------------------1-WHILE-----------------------------------------------------------
+
+//func sumOfPositives(_ array: [Int]) -> Int {
+//    var counter = 0
+//    var index = 0
+//    while index < array.count {
+//        if array[index] > 0 {
+//            counter += array[index]
+//        }
+//        index += 1
+//    }
+//    return counter
+//}
+//
+//let result = sumOfPositives(arr)
+//print(result)
+
+//------------------------------------------------------------1-higher order functions (HOF)------------------------------------
+
+//func sumOfPositives(_ array: [Int]) -> Int {
+//    var counter = 0
+//    arr.map {counter += $0 > 0 ? $0 : 0}
+//    return counter
+//}
+
+
+//func sumOfPositives(_ array: [Int]) -> Int {
+//    return arr.reduce(into: Int()) { result, item in
+//        result += item > 0 ?  item : 0
+//    }
+//}
+//
+//let result = sumOfPositives(arr)
+//print(result)
+
+
+//func sumOfPositives(_ array: [Int]) -> Int {
+//    return arr.reduce(into: 0) { $0 += $1 > 0 ?  $1 : 0 }
+//}
+//
+//let result = sumOfPositives(arr)
+//print(result)
 
 
 //------------------------------------------------------------2-----------------------------------------------------------------
@@ -2361,16 +2430,10 @@ import Foundation
 //let arrayOne =  [3, 10, 300, 15, 3]
 //let cash = 13
 //func mostExpensive(cash: Int, products: [Int]) -> Int {
-//    var newArr: [Int] = []
+//    var maxCash = Int()
 //    for item in products {
 //        if item <= cash {
-//            newArr.append(item)
-//        }
-//    }
-//    var maxCash = Int()
-//    for item in newArr {
-//        if maxCash < item {
-//            maxCash = item
+//            maxCash = maxCash < item ? item : maxCash
 //        }
 //    }
 //    return maxCash
@@ -2382,25 +2445,14 @@ import Foundation
 
 //WHILE
 //let arrayOne =  [3, 10, 300, 15, 3]
-//let cash = 11
+//let cash = 13
 //func mostExpensive(cash: Int, products: [Int]) -> Int {
-//    var arrayItems = products
-//var index = Int()
-//    while index < arrayItems.count {
-//        if arrayItems[index] > cash {
-//            arrayItems.remove(at: index)
-//            continue
-//        }
-//        if index + 1 < arrayItems.count {
-//            index += 1
-//        } else {
-//            break
-//        }
-//    }
-//    index = 0
 //    var maxCash = Int()
-//    while index < arrayItems.count {
-//        maxCash = maxCash < arrayItems[index] ? arrayItems[index] : maxCash
+//    var index = Int()
+//    while index < products.count {
+//        if products[index] <= cash {
+//            maxCash = maxCash < products[index] ? products[index] : maxCash
+//        }
 //        index += 1
 //    }
 //    return maxCash
@@ -2418,53 +2470,210 @@ import Foundation
 //}
 //------------------------------------------------------------47-FOR-------------------------------------------------------------
 //FOR:
-//let arrayOne =  [3, 10, 300, 15, 3]
-//let cash = 13
-//func mostExpensive(cash: Int, products: [Int]) -> Int {
-//    var newArr: [Int] = []
-//    for item in products {
-//        if item <= cash {
-//            newArr.append(item)
+//let arrayOne = [1, 2, 2, 3, 3, 3]
+//func groupElements(array: [Int]) -> [[Int]] {
+//    var result: [[Int]] = []
+//    var iterator: [Int] = []
+//    guard let first = array.first else {return [[]]}
+//    var counter = first
+//    for item in array {
+//        if counter == item {
+//            iterator.append(item)
+//        } else {
+//            result.append(iterator)
+//            iterator.removeAll()
+//            counter = item
+//            iterator.append(item)
 //        }
 //    }
-//    var maxCash = Int()
-//    for item in newArr {
-//        if maxCash < item {
-//            maxCash = item
-//        }
-//    }
-//    return maxCash
+//    result.append(iterator)
+//    return result
 //}
 //
-//let result = mostExpensive(cash: cash, products: arrayOne)
+//let result = groupElements(array: arrayOne)
 //print(result)
 //------------------------------------------------------------47-WHILE-----------------------------------------------------------
 
 //WHILE
-//let arrayOne =  [3, 10, 300, 15, 3]
-//let cash = 11
-//func mostExpensive(cash: Int, products: [Int]) -> Int {
-//    var arrayItems = products
-//var index = Int()
-//    while index < arrayItems.count {
-//        if arrayItems[index] > cash {
-//            arrayItems.remove(at: index)
-//            continue
+//func groupElements(array: [Int]) -> [[Int]] {
+//    var result: [[Int]] = []
+//    var iterator: [Int] = []
+//    var index = Int()
+//    guard let first = array.first else {return [[]]}
+//    var counter = first
+//    while index < array.count {
+//        if counter == array[index] {
+//            iterator.append(array[index])
+//        } else {
+//            result.append(iterator)
+//            iterator.removeAll()
+//            counter = array[index]
+//            iterator.append(array[index])
 //        }
-//        if index + 1 < arrayItems.count {
+//        if index + 1 < array.count {
 //            index += 1
 //        } else {
+//            result.append(iterator)
 //            break
 //        }
 //    }
-//    index = 0
-//    var maxCash = Int()
-//    while index < arrayItems.count {
-//        maxCash = maxCash < arrayItems[index] ? arrayItems[index] : maxCash
-//        index += 1
-//    }
-//    return maxCash
+//    return result
 //}
 //
-//let result = mostExpensive(cash: cash, products: arrayOne)
+//let result = groupElements(array: arrayOne)
+//print(result)
+
+//------------------------------------------------------------48-----------------------------------------------------------------
+//48. Проверить что массив является горой
+//
+//[1, 2, 3, 2, 1] -> true
+//[1, 2, 3, 4, 5] -> false
+//
+//func isValidMountain(array: [Int]) -> Bool {
+//}
+//------------------------------------------------------------48-FOR-------------------------------------------------------------
+//FOR:
+//let arrayOne = [1, 2, 3, 2, 1]
+//func isValidMountain(array: [Int]) -> Bool {
+//    if array.count % 2 == 0 {
+//        return false
+//    }
+//    let arrCenter = (array.count - 1)/2
+//    for (index, item) in array.enumerated() {
+//        if index < arrCenter {
+//            if item == array[array.endIndex - index - 1] {
+//                continue
+//            } else {
+//                return false
+//            }
+//        }
+//        if index == arrCenter {
+//            if item >= array[index - 1] {
+//                return true
+//            } else {
+//                return false
+//            }
+//        }
+//    }
+//    return false
+//}
+//
+//let result = isValidMountain(array: arrayOne)
+//print(result)
+//------------------------------------------------------------48-WHILE-----------------------------------------------------------
+
+//WHILE
+//let arrayOne = [1, 2, 3, 4, 5]
+//func isValidMountain(array: [Int]) -> Bool {
+//    if array.count % 2 == 0 {
+//        return false
+//    }
+//    let arrCenter = (array.count - 1)/2
+//    var index = Int()
+//    while index <= arrCenter {
+//        if index < arrCenter {
+//            if array[index] == array[array.endIndex - index - 1] {
+//                index += 1
+//                continue
+//            } else {
+//                return false
+//            }
+//        }
+//        if index == arrCenter {
+//            if array[index] >= array[index - 1] {
+//                return true
+//            } else {
+//                return false
+//            }
+//        }
+//        index += 1
+//    }
+//    return false
+//}
+//
+//let result = isValidMountain(array: arrayOne)
+//print(result)
+
+//------------------------------------------------------------49-----------------------------------------------------------------
+//49. Дано число N нужно вывести массив с O до N и от N до 0
+//
+//4 -> [0, 1, 2, 3, 4, 3, 2, 1]
+//
+//func thereAndBack(_ num: Int) -> [Int] {
+//}
+//------------------------------------------------------------49-FOR-------------------------------------------------------------
+//FOR:
+//let num = 5
+//func thereAndBack(_ num: Int) -> [Int] {
+//    var result: [Int] = []
+//    var counter = Int()
+//    for item in (0...(2 * num)) {
+//        counter <= num ? result.append(counter) : result.append(num - (counter - num))
+////        if counter <= num {
+////            result.append(counter)
+////        }
+////        if counter > num {
+////            result.append(num - (counter - num))
+////        }
+//        counter += 1
+//    }
+//    return result
+//}
+//
+//let result = thereAndBack(num)
+//print(result)
+//------------------------------------------------------------49-WHILE-----------------------------------------------------------
+
+//WHILE
+//let num = 4
+//func thereAndBack(_ num: Int) -> [Int] {
+//    var result: [Int] = []
+//    var counter = Int()
+//    while counter < (0...(2 * num)).count {
+//        counter <= num ? result.append(counter) : result.append(num - (counter - num))
+//        counter += 1
+//    }
+//    return result
+//}
+//
+//let result = thereAndBack(num)
+//print(result)
+
+//------------------------------------------------------------50-----------------------------------------------------------------
+//50. Дан массив четной длины, нужно перемножить первую половину массива, просуммировать вторую половину массива
+//
+//[1, 2, 3, 4, 5, 6] -> (1 * 2 * 3, 4 + 5 + 6) -> (6, 15)
+//
+//func multiplyAndSum(_ array: [Int]) -> (Int, Int) {
+//}
+//------------------------------------------------------------50-FOR-------------------------------------------------------------
+//FOR:
+//let arrayOne = [1, 2, 3, 4, 5, 6]
+//func multiplyAndSum(_ array: [Int]) -> (Int, Int) {
+//    guard let first = array.first else {return (0, 0)}
+//    var result = (first, Int())
+//    for (index, item) in array.enumerated() {
+//        result = (index < array.count/2 ? result.0 * item : result.0, index >= array.count/2 ? result.1 + item : result.1)
+//    }
+//    return result
+//}
+//
+//let result = multiplyAndSum(arrayOne)
+//print(result)
+//------------------------------------------------------------50-WHILE-----------------------------------------------------------
+
+//WHILE
+//let arrayOne = [1, 2, 3, 4, 5, 6]
+//func multiplyAndSum(_ array: [Int]) -> (Int, Int) {
+//    guard let first = array.first else {return (0, 0)}
+//    var result = (first, Int())
+//    var index = Int()
+//    while index < array.count {
+//        result = (index < array.count/2 ? result.0 * array[index] : result.0, index >= array.count/2 ? result.1 + array[index] : result.1)
+//        index += 1
+//    }
+//    return result
+//}
+//
+//let result = multiplyAndSum(arrayOne)
 //print(result)
