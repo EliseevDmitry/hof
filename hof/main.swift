@@ -123,6 +123,18 @@ import Foundation
 //let result = multiplyOfElements(arrayInt)
 //print(result)
 
+//------------------------------------------------------------2-higher order functions (HOF)------------------------------------
+
+//let arrayInt = [1, 2, 3, 4]
+//func multiplyOfElements(_ array: [Int]) -> Int {
+//    array.reduce(1) {result, item in
+//        result * item
+//    }
+//}
+//
+//let result = multiplyOfElements(arrayInt)
+//print(result)
+
 //------------------------------------------------------------3-----------------------------------------------------------------
 
 //3. Возвести каждый элементв в квадрат
@@ -165,6 +177,18 @@ import Foundation
 //
 //let result = squareElements(&arrayInt) //разобраться с inout
 //print(result)
+
+//------------------------------------------------------------3-higher order functions (HOF)------------------------------------
+
+//var arrayInt = [1, 2, 3, 4]
+//func squareElements(_ array: inout [Int]) {
+//    array.enumerated().forEach { (index, item) in
+//        array[index] = item * item
+//    }
+//}
+//
+//squareElements(&arrayInt)
+//print(arrayInt)
 
 //------------------------------------------------------------4-----------------------------------------------------------------
 
@@ -214,6 +238,21 @@ import Foundation
 //        index += 1
 //    }
 //    return counter
+//}
+//
+//let result = summation(num)
+//print(result)
+
+//------------------------------------------------------------4-higher order functions (HOF)------------------------------------
+
+//var num = 8
+////func summation(_ num: Int) -> Int {
+////    (0...num).reduce(0) {$0 + $1}
+////}
+//func summation(_ num: Int) -> Int {
+//    (0...num).reduce(0) { result, item in
+//        result + item
+//    }
 //}
 //
 //let result = summation(num)
@@ -270,6 +309,18 @@ import Foundation
 //let result = cube(arrayOne)
 //print(result)
 
+//------------------------------------------------------------5-higher order functions (HOF)------------------------------------
+
+//var arrayOne = [1, 2, 3]
+//func cube(_ array: Array<Int>) -> Array<Int> {
+//    array.map { item in
+//        Int(pow(Float(item), Float(3)))
+//    }
+//}
+//
+//let result = cube(arrayOne)
+//print(result)
+
 //------------------------------------------------------------6-----------------------------------------------------------------
 
 //6. Инвертировать элементы массива
@@ -316,6 +367,16 @@ import Foundation
 
 
 //24.10.2024
+
+//------------------------------------------------------------6-higher order functions (HOF)------------------------------------
+
+//var arrayOne = [1, -2, 3, -4, 5]
+//func invert(_ array: [Int]) -> [Int] {
+//    array.map{$0 * -1}
+//}
+//
+//let result = invert(arrayOne)
+//print(result)
 
 //------------------------------------------------------------7-----------------------------------------------------------------
 
@@ -365,6 +426,17 @@ import Foundation
 //        index += 1
 //    }
 //    return resultInt
+//}
+//
+//let result = findSmallest(arrayOne)
+//print(result)
+
+//------------------------------------------------------------7-higher order functions (HOF)------------------------------------
+
+//var arrayOne = [34, 15, 88, 2]
+//func findSmallest(_ array: [Int]) -> Int {
+//    guard let min = array.min() else {return 0}
+//    return min
 //}
 //
 //let result = findSmallest(arrayOne)
@@ -428,6 +500,16 @@ import Foundation
  print(result)
  */
 
+//------------------------------------------------------------8-higher order functions (HOF)------------------------------------
+
+//var arrayOne = [101, 5, 77, 505, 404]
+//func minMax(_ array: [Int]) -> (Int, Int) {
+//    (array.min() ?? 0, array.max() ?? 0)
+//}
+//
+//let result = minMax(arrayOne)
+//print(result)
+
 //------------------------------------------------------------9-----------------------------------------------------------------
 
 //9. Функция принимает количество и число и возвращает массив повторяющихся чисел
@@ -480,6 +562,16 @@ import Foundation
 //let result = repeatNumber(number, count: count)
 //print(result)
 
+//------------------------------------------------------------9-higher order functions (HOF)------------------------------------
+//var number = 0
+//var count = 4
+//func repeatNumber(_ number: Int, count: Int) -> [Int] {
+//   Array(repeating: number, count: count) //немного зачитил функцию
+//}
+//
+//let result = repeatNumber(number, count: count)
+//print(result)
+
 //------------------------------------------------------------10-----------------------------------------------------------------
 
 //let numver = -10
@@ -526,6 +618,15 @@ import Foundation
 //let result = sumOfAbs(arrayOne)
 //print(result)
 
+//------------------------------------------------------------10-higher order functions (HOF)------------------------------------
+//var arrayOne = [-1, 2, -3, 4, -5]
+//func sumOfAbs(_ array: [Int]) -> Int {
+//    array.reduce(0){abs($0) + abs($1)}
+//}
+//
+//let result = sumOfAbs(arrayOne)
+//print(result)
+
 //------------------------------------------------------------11-----------------------------------------------------------------
 
 //11. Подсчитать количество true в массиве
@@ -560,7 +661,6 @@ import Foundation
 //let result = countTrues(arrayOne)
 //print(result)
 
-
 //------------------------------------------------------------11-WHILE-----------------------------------------------------------
 
 //WHILE
@@ -583,6 +683,21 @@ import Foundation
 //let result = countTrues(arrayOne)
 //print(result)
 
+//------------------------------------------------------------11-higher order functions (HOF)------------------------------------
+//let arrayOne = [true,  true,  true,  false,
+//                true,  true,  true,  true ,
+//                true,  false, true,  false,
+//                true,  false, false, true ,
+//                true,  true,  true,  true ,
+//                false, false, true,  true]
+//
+//func countTrues(_ array: [Bool]) -> Int {
+//    array.filter{$0==true}.count
+//}
+//
+//
+//let result = countTrues(arrayOne)
+//print(result)
 
 //------------------------------------------------------------12-----------------------------------------------------------------
 
@@ -629,6 +744,15 @@ import Foundation
 //let result = summation(n: numberN, m: numberM)
 //print(result)
 
+//------------------------------------------------------------12-higher order functions (HOF)------------------------------------
+//var numberN = 2
+//var numberM = 8
+//func summation(n: Int, m: Int) -> Int {
+//    (n...m).reduce(0){$0 + $1}
+//}
+//
+//let result = summation(n: numberN, m: numberM)
+//print(result)
 
 //------------------------------------------------------------13-----------------------------------------------------------------
 
@@ -667,6 +791,15 @@ import Foundation
 //        index += 1
 //    }
 //    return Int(counter/marks.count)
+//}
+//
+//let result = average(arrayOne)
+//print(result)
+
+//------------------------------------------------------------13-higher order functions (HOF)------------------------------------
+//var arrayOne = [1, 2, 3, 4, 5]
+//func average(_ marks: [Int]) -> Int {
+//    marks.reduce(0){$0 + $1} / marks.count
 //}
 //
 //let result = average(arrayOne)
@@ -719,6 +852,15 @@ import Foundation
 //let result = convert(num: number)
 //print(result)
 
+//------------------------------------------------------------14-higher order functions (HOF)------------------------------------
+//var number = 12
+//func convert(num: Int) -> String {
+//  let newArr = Array(repeating: "0", count: num)
+//  return String(newArr.enumerated().map{$0.offset % 2 != 0 ? "0" : "1"})
+//}
+//
+//let result = convert(num: number)
+//print(result)
 
 //------------------------------------------------------------15-----------------------------------------------------------------
 
@@ -758,6 +900,15 @@ import Foundation
 //    }
 //
 //    return counter
+//}
+//
+//let result = countOfPositivesSumOfNegatives(arrayOne)
+//print(result)
+
+//------------------------------------------------------------15-higher order functions (HOF)------------------------------------
+//var arrayOne = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15]
+//func countOfPositivesSumOfNegatives(_ array: [Int]) -> (Int, Int) {
+//    (array.filter{$0 > 0}.count, array.filter{$0 < 0}.reduce(0){$0 + $1})
 //}
 //
 //let result = countOfPositivesSumOfNegatives(arrayOne)
@@ -809,6 +960,16 @@ import Foundation
 //let result = numberToPower(number, power)
 //print(result)
 
+//------------------------------------------------------------16-higher order functions (HOF)------------------------------------
+
+//var number = 10
+//var power = 6
+//func numberToPower(_ number: Int, _ power: Int) -> Int {
+//    Array(repeating: number, count: power).reduce(1){$0 * $1}
+//}
+//
+//let result = numberToPower(number, power)
+//print(result)
 
 //------------------------------------------------------------17-----------------------------------------------------------------
 
@@ -861,6 +1022,16 @@ import Foundation
 //noOdds(array: &arrayOne)
 //print(arrayOne)
 
+//------------------------------------------------------------17-higher order functions (HOF)------------------------------------
+
+//var arrayOne = [0,1,2,3,4,5]
+//func noOdds(array: [Int]) -> [Int] {
+//    array.map{$0 % 2 == 0 ? $0 : 1}.filter{$0 != 1}
+//}
+//
+//let result = noOdds(array: arrayOne)
+//print(result)
+
 //------------------------------------------------------------18-----------------------------------------------------------------
 
 //18. Найти сумму минимальных значений
@@ -906,6 +1077,16 @@ import Foundation
 //    return counter
 //}
 //
+//
+//let result = sumOfMinimums(arrayOne)
+//print(result)
+
+//------------------------------------------------------------18-higher order functions (HOF)------------------------------------
+
+//var arrayOne =  [[ 1, 2, 3, 4, 5 ], [ 5, 6, 7, 8, 9 ], [ 20, 21, 34, 56, 100 ]]
+//func sumOfMinimums(_ array: [[Int]]) -> Int {
+//    array.reduce(0){$0 + ($1.min() ?? 0)}
+//}
 //
 //let result = sumOfMinimums(arrayOne)
 //print(result)
@@ -962,6 +1143,16 @@ import Foundation
 //    return counter
 //}
 //
+//
+//let result = sumMultiply(arrayOne)
+//print(result)
+
+//------------------------------------------------------------19-higher order functions (HOF)------------------------------------
+
+//var arrayOne = [6, 5, 4, 3, 2, 1]
+//func sumMultiply(_ array: [Int]) -> (Int, Int) {
+//    (array.prefix(array.count/2).reduce(0){$0 + $1}, array.dropFirst(array.count/2).reduce(1){$0 * $1})
+//}
 //
 //let result = sumMultiply(arrayOne)
 //print(result)
@@ -1035,6 +1226,16 @@ import Foundation
 //rootOrSquare(&arrayOne)
 //print(arrayOne)
 
+//------------------------------------------------------------20-higher order functions (HOF)------------------------------------
+
+//var arrayOne = [4.0, 3.0, 9.0, 7.0, 2.0, 1.0]
+//func rootOrSquare(_ array: [Double]) -> [Double] {
+//    array.map{$0.squareRoot().truncatingRemainder(dividingBy: 1) == 0 ? $0.squareRoot() : pow($0, 2.0)} //это жест=ь без теории под рукой!
+//}
+//
+//let result = rootOrSquare(arrayOne)
+//print(result)
+
 //------------------------------------------------------------21-----------------------------------------------------------------
 
 //21. Возвести в квадрат число если не берется корень или взять корень числа  и вернуть массив
@@ -1075,6 +1276,16 @@ import Foundation
 //
 //rootOrSquare(&arrayOne)
 //print(arrayOne)
+
+//------------------------------------------------------------21-higher order functions (HOF)------------------------------------
+
+//var arrayOne = [4,3,9,7,2,1]
+//func rootOrSquare(_ array: [Int]) -> [Int] {
+//    array.map{Float($0).squareRoot().truncatingRemainder(dividingBy: 1) == 0 ? Int(Float($0).squareRoot()) : Int(pow(Float($0), 2.0))}
+//}
+//
+//let result = rootOrSquare(arrayOne)
+//print(result)
 
 //------------------------------------------------------------22-----------------------------------------------------------------
 
@@ -1158,6 +1369,20 @@ import Foundation
 //let result = findIndex(arrayOne, target: target)
 //print(result)
 
+//------------------------------------------------------------22-higher order functions (HOF)------------------------------------
+
+//var arrayOne = [1, 2, 3, 4, 6, 8, 9]
+//var target = 7
+//func findIndex(_ array: [Int], target: Int) -> Int {
+//    var newArr = array
+//    newArr.contains(target) ? () : newArr.append(target)
+//    newArr.sort()
+//    return newArr.firstIndex(of: target) ?? 0
+//}
+//
+//let result = findIndex(arrayOne, target: target)
+//print(result)
+
 //------------------------------------------------------------23-----------------------------------------------------------------
 
 //23. Написать функцию которая умножает каждый элемент на индекс
@@ -1196,6 +1421,15 @@ import Foundation
 //multiplyIndex(&arrayOne)
 //print(arrayOne)
 
+//------------------------------------------------------------23-higher order functions (HOF)------------------------------------
+
+//var arrayOne = [1, 2, 3, 4]
+//func multiplyIndex(_ array: [Int]) -> [Int] {
+//    array.enumerated().map {$0.element * $0.offset}
+//}
+//
+//let result = multiplyIndex(arrayOne)
+//print(result)
 
 //------------------------------------------------------------24-----------------------------------------------------------------
 
@@ -1235,6 +1469,19 @@ import Foundation
 //
 //multiplyIndex(&arrayOne)
 //print(arrayOne)
+
+//------------------------------------------------------------24-higher order functions (HOF)------------------------------------
+
+//var arrayOne = [10, 2, 5, 1]
+//func multiplyPower(_ array: [Int]) -> [Int] {
+//    //array.enumerated().map{Int(pow( Float($0.element) * Float($0.offset) ))} //не схавал так
+//    array.enumerated().map{index, item in
+//        Int(pow(Float(item), Float(index + 1)))
+//    }
+//}
+//
+//let result = multiplyPower(arrayOne)
+//print(result)
 
 //------------------------------------------------------------25-(косяк в условии)-----------------------------------------------------------------
 //Преобразование строки в массив
@@ -1289,6 +1536,15 @@ import Foundation
 //let result = convertToArray(str)
 //print(result)
 
+//------------------------------------------------------------25-higher order functions (HOF)------------------------------------
+
+//var str = "abcd"
+//func convertToArray(_ string: String) -> Array<Character> {
+//    Array(string)
+//}
+//
+//let result = convertToArray(str)
+//print(result)
 
 //------------------------------------------------------------26-----------------------------------------------------------------
 //26. Написать функцию которая конвертирует строку в массив Character и добавляет индекс
@@ -1333,6 +1589,15 @@ import Foundation
 
 //преобразование String.index в Int только через функцию строки вычисленияя "distance"
 
+//------------------------------------------------------------26-higher order functions (HOF)------------------------------------
+
+//var str = "abcd"
+//func convertToArray(_ string: String) -> [String] {
+//    string.enumerated().map {"\($0.offset.description)\($0.element)"}
+//}
+//
+//let result = convertToArray(str)
+//print(result)
 
 //------------------------------------------------------------27-----------------------------------------------------------------
 //27. Удалить первый и последний элемент строки
@@ -1383,6 +1648,20 @@ import Foundation
 //removeFirstLast(&str)
 //print(str)
 
+//------------------------------------------------------------27-higher order functions (HOF)------------------------------------
+
+//var str = "place"
+//func removeFirstLast(_ string: String) -> String {
+////    var result = string
+////    result.removeLast()
+////    result.removeFirst()
+////    return result
+//    let result = string.dropFirst().dropLast()
+//    return String(result)
+//}
+//
+//let result = removeFirstLast(str)
+//print(result)
 
 //------------------------------------------------------------28-----------------------------------------------------------------
 //28. Удалить элемент строки по-середине
@@ -1434,6 +1713,21 @@ import Foundation
 //removeFirstLast(&str)
 //print(str)
 
+//------------------------------------------------------------28-higher order functions (HOF)------------------------------------
+
+//var str = "place"
+//func removeFirstLast(_ string: String) -> String {
+//        if string.count % 2 == 0 {
+//            return "строка четная"
+//        }
+//    var str = Array(string)
+//    str.remove(at: str.count/2)
+//    return String(str)
+//}
+//
+//let result = removeFirstLast(str)
+//print(result)
+
 //------------------------------------------------------------29-----------------------------------------------------------------
 //29. Суммировать четные числа
 //
@@ -1476,6 +1770,16 @@ import Foundation
 //let result = sumEvenNumbers(array: arrayOne)
 //print(result)
 
+//------------------------------------------------------------29-higher order functions (HOF)------------------------------------
+
+//var arrayOne = [4, 3, 1, 2, 5, 10, 6, 7, 9, 8]
+//func sumEvenNumbers(array: [Int]) -> Int {
+//    array.filter{ $0 % 2 == 0 }.reduce(0,+)
+//}
+//
+//let result = sumEvenNumbers(array: arrayOne)
+//print(result)
+
 //------------------------------------------------------------30-----------------------------------------------------------------
 //30. Посчитать разницу между максимальным и минимальным
 //
@@ -1489,7 +1793,7 @@ import Foundation
 //FOR:
 //var arrayOne = [23, 3, 19, 21, 16]
 //var arrayOne = [1, 434, 555, 34, 112]
-//func sumEvenNumbers(array: [Int]) -> Int {
+//func differenceMaxMin(array: [Int]) -> Int {
 //    guard let first = array.first else {return 0}
 //    var counter = (first, first)
 //    for item in array {
@@ -1499,7 +1803,7 @@ import Foundation
 //}
 //
 //
-//let result = sumEvenNumbers(array: arrayOne)
+//let result = differenceMaxMin(array: arrayOne)
 //print(result)
 
 
@@ -1507,7 +1811,7 @@ import Foundation
 
 //WHILE
 //var arrayOne = [1, 434, 555, 34, 112]
-//func sumEvenNumbers(array: [Int]) -> Int {
+//func differenceMaxMin(array: [Int]) -> Int {
 //    guard let first = array.first else {return 0}
 //    var counter = (first, first)
 //    var index = 0
@@ -1519,7 +1823,17 @@ import Foundation
 //}
 //
 //
-//let result = sumEvenNumbers(array: arrayOne)
+//let result = differenceMaxMin(array: arrayOne)
+//print(result)
+
+//------------------------------------------------------------30-higher order functions (HOF)------------------------------------
+
+//var arrayOne = [23, 3, 19, 21, 16]
+//func differenceMaxMin(array: [Int]) -> Int {
+//    (array.max() ?? 0) - (array.min() ?? 0)
+//}
+//
+//let result = differenceMaxMin(array: arrayOne)
 //print(result)
 
 //------------------------------------------------------------31-----------------------------------------------------------------
@@ -1573,6 +1887,17 @@ import Foundation
 //let result = consecutive(arrayOne)
 //print(result)
 
+//------------------------------------------------------------31-higher order functions (HOF)------------------------------------
+
+//var arrayOne = [4,6,8]
+//func consecutive(_ array: [Int]) -> Int {
+//    let result = ((array.first ?? 0)...(array.last ?? 0)).filter{!array.contains($0)} //немного читил
+//
+//    return result.count
+//}
+//
+//let result = consecutive(arrayOne)
+//print(result)
 
 //------------------------------------------------------------32-----------------------------------------------------------------
 //32. Вытащить максимальные элементы из массива в заданном количестве
@@ -1622,6 +1947,19 @@ import Foundation
 //let result = largest(count: 3, array: arrayOne)
 //print(result)
 
+//------------------------------------------------------------32-higher order functions (HOF)------------------------------------
+
+//var arrayOne = [7,6,5,4,3,2,1]
+//var count = 3
+//    func largest(count: Int, array: [Int]) -> [Int] {
+//        var newArr: [Int] = []
+//        newArr.append(contentsOf: array.sorted{$0 > $1}.prefix(count))
+//        return newArr
+//}
+//
+//let result = largest(count: count, array: arrayOne)
+//print(result)
+
 //------------------------------------------------------------33-----------------------------------------------------------------
 //33. По какоми индексу вставить число в отсортированном массиве
 //
@@ -1669,6 +2007,21 @@ import Foundation
 //        index += 1
 //    }
 //    return 0
+//}
+//
+//let result = keepOrder(array: arrayOne, element: element)
+//print(result)
+
+//------------------------------------------------------------33-higher order functions (HOF)------------------------------------
+
+//По какоми индексу вставить число в отсортированном массиве
+//let arrayOne = [1, 2, 3, 4, 7]
+//let element = 5
+//func keepOrder(array: [Int], element: Int) -> Int {
+////    var newArr = array
+////    newArr.append(element)
+////    return newArr.sorted().firstIndex(of: element) ?? 0
+//    array.firstIndex{$0 >= element} ?? 0 //немного читил
 //}
 //
 //let result = keepOrder(array: arrayOne, element: element)
@@ -1730,6 +2083,21 @@ import Foundation
 //let result = trim(str, num)
 //print(result)
 
+//------------------------------------------------------------34-higher order functions (HOF)------------------------------------
+
+//let str = "Нcdcdе"
+//let num = 2
+//
+//func trim(_ string: String, _ num: Int) -> String {
+////    var newString = string.prefix(num)
+////    newString.append(contentsOf: "...")
+////    return String(newString)
+//    String(string.prefix(num).appending("..."))
+//}
+//
+//let result = trim(str, num)
+//print(result)
+
 //------------------------------------------------------------35-----------------------------------------------------------------
 //35. Каждый элемент поделить на порядок в массиве и суммировать
 //
@@ -1773,7 +2141,18 @@ import Foundation
 //let result = add(array: arrayOne)
 //print(result)
 
+//------------------------------------------------------------35-higher order functions (HOF)------------------------------------
 
+//( 3 / 1 ) + ( 4 / 2 ) + ( 6 / 3 ) = 7
+//let arrayOne = [3,4,6]
+//func add(array: [Int]) -> Int {
+//    array.enumerated().map{$0.element / ($0.offset + 1)}.reduce(0,+)
+//}
+//
+//let result = add(array: arrayOne)
+//print(result)
+
+//-------------------------------------------------------------------------------------------------------------------------------
 
 //4 способа создания пустого массива
 
@@ -1872,6 +2251,16 @@ import Foundation
 //let result = removeSmallest(arrayOne)
 //print(result)
 
+//------------------------------------------------------------35-higher order functions (HOF)------------------------------------
+
+
+//let arrayOne = [0,1,0,1,0]
+//func removeSmallest(_ array: [Int]) -> [Int] {
+//   array.filter{$0 != array.min()}
+//}
+//
+//let result = removeSmallest(arrayOne)
+//print(result)
 
 //------------------------------------------------------------37-----------------------------------------------------------------!!!!!!
 //37. Один массив прибавить ко второму массиву - все способы
@@ -1914,6 +2303,20 @@ import Foundation
 //    return arrOne
 //}
 //
+//
+//let result = sumArrays(lhs: arrayOne, rhs: arrayTwo)
+//print(result)
+
+//------------------------------------------------------------35-higher order functions (HOF)------------------------------------
+
+//let arrayOne = [1, 2, 3]
+//let arrayTwo = [4, 5]
+//func sumArrays(lhs: [Int], rhs: [Int]) -> [Int] {
+//    lhs + rhs
+//    
+//    //[lhs, rhs].flatMap{ $0 } // зачитил
+//    //rhs.reduce(lhs){$0 + [$1]} // зачитил
+//}
 //
 //let result = sumArrays(lhs: arrayOne, rhs: arrayTwo)
 //print(result)
@@ -1980,6 +2383,20 @@ import Foundation
 //
 //let result = firstNonConsequitive(array: arrayOne)
 //print(result)
+
+//------------------------------------------------------------38-higher order functions (HOF)------------------------------------
+
+
+let arrayOne = [1, 2, 3, 4, 5, 7, 8, 9]
+func firstNonConsequitive(array: [Int]) -> (Int, Int) {
+    //array.firstIndex{$0 >= element} ?? 0 //немного читил
+    let index = array.firstIndex{$0 <= $1}
+    let item = array.firstIndex(of: array.firstIndex{$0 <= array.first ?? 0} ?? 0)
+   //(array.firstIndex(of: array.firstIndex{$0 <= array.first ?? 0} ?? 0), array.firstIndex{$0 <= array.first ?? 0} ?? 0)
+}
+
+let result = firstNonConsequitive(array: arrayOne)
+print(result)
 
 //------------------------------------------------------------39-----------------------------------------------------------------!!!!!!
 //39. Проверить что массив монотонно убывающий
