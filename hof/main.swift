@@ -2386,17 +2386,20 @@ import Foundation
 
 //------------------------------------------------------------38-higher order functions (HOF)------------------------------------
 
+//ОСТАВЛЯЕМ-------------------------!!!!!!!!!!!!!!!
 
-let arrayOne = [1, 2, 3, 4, 5, 7, 8, 9]
-func firstNonConsequitive(array: [Int]) -> (Int, Int) {
-    //array.firstIndex{$0 >= element} ?? 0 //немного читил
-    let index = array.firstIndex{$0 <= $1}
-    let item = array.firstIndex(of: array.firstIndex{$0 <= array.first ?? 0} ?? 0)
-   //(array.firstIndex(of: array.firstIndex{$0 <= array.first ?? 0} ?? 0), array.firstIndex{$0 <= array.first ?? 0} ?? 0)
-}
+//38. Вернуть первый непоследовательный элемент и его индекс
 
-let result = firstNonConsequitive(array: arrayOne)
-print(result)
+//let arrayOne = [1, 2, 3, 4, 5, 7, 8, 9]
+//func firstNonConsequitive(array: [Int]) -> (Int, Int) {
+//    
+//}
+//   
+//
+//
+//
+//let result = firstNonConsequitive(array: arrayOne)
+//print(result)
 
 //------------------------------------------------------------39-----------------------------------------------------------------!!!!!!
 //39. Проверить что массив монотонно убывающий
@@ -2451,6 +2454,17 @@ print(result)
 //let result = comparator(1.0, 2.0)
 //print(result)
 //------------------------------------------------------------ЗАПОМНИТЬ-----------------------------------------------------------
+
+//-----------------------------------------------------------39-higher order functions (HOF)------------------------------------
+//Проверить что массив монотонно убывающий
+
+//let arrayOne = [10, 9, 8, 8, 7, 9]
+//func isIncreasing(array: [Int]) -> Bool {
+//    zip(array, array.dropFirst()).allSatisfy{$0 >= $1} //немного читил
+//}
+//
+//let result = isIncreasing(array: arrayOne)
+//print(result)
 
 //------------------------------------------------------------40-----------------------------------------------------------------!!!!!!
 //40. Написать функцию которая принимает массив чисел и проверяет монотонный он или нет
@@ -2548,6 +2562,21 @@ print(result)
 //let result = isMonotone(arrayOne)
 //print(result)
 
+//-----------------------------------------------------------40-higher order functions (HOF)------------------------------------
+//Проверить что массив монотонно убывающий
+
+//let arrayOne = [5,5] //[1, 2, 3, 3, 3, 1] //[6, 3, 2, 1] //[1,3,6,8]
+//func isMonotone(_ array: [Int]) -> Bool {
+//    if array.count <= 1 {
+//        return true
+//    }
+//    return zip(array, array.dropFirst()).allSatisfy { $0 <= $1 } || zip(array, array.dropFirst()).allSatisfy { $0 >= $1 }
+//}
+//
+//let result = isMonotone(arrayOne)
+//print(result)
+
+
 //------------------------------------------------------------41-----------------------------------------------------------------
 //41. Маскировать кредитную карту
 //
@@ -2600,6 +2629,16 @@ print(result)
 //
 //let result = masked(string: str)
 //print(result)
+
+//-----------------------------------------------------------41-higher order functions (HOF)------------------------------------
+
+//let str = "11112345678"
+//func masked(string: String) -> String {
+//    return String([Array(string.reversed().prefix(4)), Array(repeating: "*", count: Array(string).count - 4)].flatMap{$0}.reversed())
+//}
+//let result = masked(string: str)
+//print(result)
+
 
 //------------------------------------------------------------42-----------------------------------------------------------------
 //42. Сконвертироват значение типа Any в тип данных Int
@@ -2654,6 +2693,15 @@ print(result)
 //    return 0
 //}
 //
+//let result = conver(array: arrayOne)
+//print(result)
+
+//-----------------------------------------------------------42-higher order functions (HOF)------------------------------------
+
+//let arrayOne: [Any] = [1, "4", "Hello", Character("x"), 2.5]
+//func conver(array: [Any]) -> [Int] {
+//    array.compactMap{$0 as? Int}
+//}
 //let result = conver(array: arrayOne)
 //print(result)
 
@@ -2733,6 +2781,28 @@ print(result)
 //let result = conver(array: arrayOne)
 //print(result)
 
+//-----------------------------------------------------------43-higher order functions (HOF)------------------------------------
+
+//let arrayOne: [Any] = ["1", 2, 3.5, Character("4")]
+//func conver(array: [Any]) -> Double {
+//  let result = array.compactMap{ value in
+//        if let newValue = value as? String, let returnValue = Double(newValue) {
+//               return returnValue
+//            } else if let newValue = value as? Int {
+//                return Double(newValue)
+//            } else if let newValue = value as? Double{
+//                return newValue
+//            } else if let newValue = value as? Character, let returnValue = Double(String(newValue)){
+//                return returnValue
+//            }
+//      return nil
+//    }
+//    return result.reduce(0){$0 + $1}
+//}
+//
+//let result = conver(array: arrayOne)
+//print(result)
+
 //------------------------------------------------------------44-----------------------------------------------------------------
 //44. Перемешайте массив со сдвигом N
 //
@@ -2792,6 +2862,10 @@ print(result)
 //let result = shuffleArray(array: arrayOne, offset: offset)
 //print(result)
 
+//-----------------------------------------------------------44-higher order functions (HOF)------------------------------------
+
+//ОСТАВЛЯЕМ-------------------------!!!!!!!!!!!!!!!
+
 //------------------------------------------------------------45-----------------------------------------------------------------
 //45. Найти все непоследовательные элементы в массиве
 //
@@ -2835,6 +2909,10 @@ print(result)
 //let result = findFirstNonConsecutive(array: arrayOne)
 //print(result)
 
+//-----------------------------------------------------------45-higher order functions (HOF)------------------------------------
+
+//ОСТАВЛЯЕМ-------------------------!!!!!!!!!!!!!!!
+
 //------------------------------------------------------------46-----------------------------------------------------------------
 //46. Дан массив цен, нужно найти самый дорогой продукт на котрый хватит хватил кеш
 //
@@ -2873,6 +2951,17 @@ print(result)
 //        index += 1
 //    }
 //    return maxCash
+//}
+//
+//let result = mostExpensive(cash: cash, products: arrayOne)
+//print(result)
+
+//-----------------------------------------------------------46-higher order functions (HOF)------------------------------------
+
+//let arrayOne =  [3, 10, 300, 15, 3]
+//let cash = 13
+//func mostExpensive(cash: Int, products: [Int]) -> Int {
+//    products.filter{$0 < cash}.max() ?? 0
 //}
 //
 //let result = mostExpensive(cash: cash, products: arrayOne)
@@ -2938,6 +3027,17 @@ print(result)
 //}
 //
 //let result = groupElements(array: arrayOne)
+//print(result)
+
+//-----------------------------------------------------------47-higher order functions (HOF)------------------------------------
+
+//ОСТАВЛЯЕМ-------------------------!!!!!!!!!!!!!!!
+//let arrayOne = [1, 2, 2, 3, 3, 3]
+//func groupElements(array: [Int]) -> [[Int]] {
+//    
+//}
+//
+//let result = arrayOne(arrayOne)
 //print(result)
 
 //------------------------------------------------------------48-----------------------------------------------------------------
@@ -3006,6 +3106,28 @@ print(result)
 //        index += 1
 //    }
 //    return false
+//}
+//
+//let result = isValidMountain(array: arrayOne)
+//print(result)
+
+//-----------------------------------------------------------48-higher order functions (HOF)------------------------------------
+
+//let arrayOne = [1, 2, 3, 2, 1]
+//func isValidMountain(array: [Int]) -> Bool {
+//    var newArr:[Int] = array
+//    newArr.remove(at: (newArr.count - 1)/2)
+////    let one = newArr.prefix(newArr.count/2)
+////    print(one)
+////    let two = Array(newArr.reversed().prefix(newArr.count/2))
+////    print(two)
+////    let three = Array(newArr.prefix(newArr.count/2)).last ?? 0
+////    print(three)
+////    let four = array.firstIndex(of: (array.count - 1)/2) ?? 0
+////    print(four)
+////    return one.elementsEqual(two) && three > four ? true : false
+//    return (newArr.prefix(newArr.count/2)).elementsEqual(Array(newArr.reversed().prefix(newArr.count/2))) && Array(newArr.prefix(newArr.count/2)).last ?? 0 > array.firstIndex(of: (array.count - 1)/2) ?? 0 ? true : false
+////это никогда не прочитать
 //}
 //
 //let result = isValidMountain(array: arrayOne)
